@@ -5,8 +5,19 @@ class Services {
         this.model = nomeDoModel
     }
 
-    async getAllForDb() {
-        return db[this.model].findAll();
+    async getAllForDb(page = 1, limit = 10) {
+        const offset = (page - 1) * limit;
+        const resultado = await db[this.model].findAndCountAll({
+            limit,
+            offset
+        });
+
+        return {
+            total: resultado.count,
+            paginaAtual: page,
+            totalPaginas: Math.ceil(resultado.count / limit),
+            dados: resultado.rows
+        }
     }
 
     async getOneItemForId(id) {

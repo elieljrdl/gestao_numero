@@ -4,8 +4,12 @@ class Controller {
     }
 
     async getAll(req, res) {
+        const { page = 1, limit = 10 } = req.query;
         try {
-            const listItens = await this.entidadeService.getAllForDb()
+            const listItens = await this.entidadeService.getAllForDb(
+                Number(page),
+                Number(limit)
+            )
             return res.status(200).json(listItens)
         } catch (erro) {
             res.status(500).json(erro)

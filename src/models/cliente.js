@@ -12,7 +12,13 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Cliente.hasMany(models.Conexao, {
         foreignKey: 'cliente_id',
-      })
+      });
+
+      Cliente.hasMany(models.Whatsapp, {
+        foreignKey: 'carteira_id'
+      });
+    
+      
     }
   }
   Cliente.init({

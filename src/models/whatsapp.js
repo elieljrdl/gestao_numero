@@ -19,6 +19,9 @@ module.exports = (sequelize, DataTypes) => {
       Whatsapp.belongsTo(models.Numero, {
         foreignKey: 'numero_id'
       });
+      Whatsapp.belongsTo(models.Cliente, {
+        foreignKey: 'carteira_id'
+      });
     }
   }
   Whatsapp.init({
