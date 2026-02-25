@@ -5,7 +5,7 @@ class Services {
         this.model = nomeDoModel
     }
 
-    async getAllForDb(page = 1, limit = 10) {
+    async getAllForDb(page, limit) {
         const offset = (page - 1) * limit;
         const resultado = await db[this.model].findAndCountAll({
             limit,
