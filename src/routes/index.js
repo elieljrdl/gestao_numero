@@ -1,9 +1,13 @@
-import express from "express";
-import operadoras from "../routes/operadorasRoutes.js"
+const express = require('express')
+const clientes = require('./clientesRoutes.js')
 
 const routes = (app) => {
 
-    app.use(express.json(), operadoras);
+    app.use(
+        express.json(),
+        clientes,
+
+    );
 }
 
-export default routes;
+module.exports = routes;
