@@ -15,7 +15,9 @@ module.exports = {
       celular_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'celulares', key: 'id'}
+        references: { model: 'celulares', key: 'id'},
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

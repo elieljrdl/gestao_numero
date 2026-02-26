@@ -20,10 +20,8 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       });
-      Whatsapp.belongsTo(models.Numero, {
-        foreignKey: 'numero_id',
-        onDelete: 'RESTRICT',
-        onUpdate: 'CASCADE'
+      Whatsapp.hasMany(models.Numero, {
+        foreignKey: 'whatsapp_id'
       });
       Whatsapp.belongsTo(models.Cliente, {
         foreignKey: 'carteira_id',
@@ -33,8 +31,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Whatsapp.init({
-    perfil: DataTypes.STRING,
-    observacao: DataTypes.TEXT
+    observacao: DataTypes.TEXT,
+    tipo: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Whatsapp',

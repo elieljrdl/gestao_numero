@@ -10,13 +10,14 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Numero.hasMany(models.Whatsapp, {
-        foreignKey: 'numero_id'
+      Numero.belongsTo(models.Whatsapp, {
+        foreignKey: 'whatsapp_id'
       });
     }
   }
   Numero.init({
-    numero: DataTypes.STRING
+    numero: DataTypes.STRING,
+    status: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Numero',
