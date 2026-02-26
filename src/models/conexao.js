@@ -11,12 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Conexao.belongsTo(models.Cliente, {
-        foreignKey: 'cliente_id'
+        foreignKey: 'cliente_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       });
 
       Conexao.hasMany(models.Whatsapp, {
-        foreignKey: 'conexao_id'
-      })
+        foreignKey: 'conexao_id',
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE'
+      });
     }
   }
   Conexao.init({

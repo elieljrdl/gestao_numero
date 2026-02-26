@@ -12,6 +12,9 @@ class Controller {
             )
             return res.status(200).json(listItens)
         } catch (erro) {
+            if (erro.name === 'SequelizeForeignKeyConstraintError') {
+                return res.status(400).json({ mensagem: 'violação de integridade referencial', detalhes: erro.message });
+            }
             res.status(500).json(erro)
         }
     };
@@ -22,6 +25,9 @@ class Controller {
             const oneItem = await this.entidadeService.getOneItemForId(id);
             return res.status(200).json(oneItem)
         } catch (erro) {
+            if (erro.name === 'SequelizeForeignKeyConstraintError') {
+                return res.status(400).json({ mensagem: 'violação de integridade referencial', detalhes: erro.message });
+            }
             res.status(500).json(erro)
         }
     }
@@ -33,6 +39,12 @@ class Controller {
             const newCreated = await this.entidadeService.createItem(itemForCreate)
             return res.status(201).json(newCreated)
         } catch (erro) {
+            if (erro.name === 'SequelizeForeignKeyConstraintError') {
+                return res.status(400).json({ mensagem: 'violação de integridade referencial', detalhes: erro.message });
+            }
+            if (erro.name === 'BusinessRuleError') {
+                return res.status(400).json({ mensagem: erro.message });
+            }
             res.status(500).json(erro)
         }
     }
@@ -49,6 +61,12 @@ class Controller {
             }
             return res.status(200).json({mensagem: `O registro foi atualizado com sucesso`})
         } catch (erro) {
+            if (erro.name === 'SequelizeForeignKeyConstraintError') {
+                return res.status(400).json({ mensagem: 'violação de integridade referencial', detalhes: erro.message });
+            }
+            if (erro.name === 'BusinessRuleError') {
+                return res.status(400).json({ mensagem: erro.message });
+            }
             res.status(500).json(erro)
         }
     }
@@ -57,9 +75,13 @@ class Controller {
         const { id } = req.params
 
         try {
-            await this.entidadeService.deleteItem(id)
-            return res.status(200).json({mensagem: `id ${id} deletado com sucesso`})
+            const deleted = await this.entidadeService.deleteItem(id)
+            if (deleted) return res.status(200).json({ mensagem: 'removido' })
+            return res.status(404).json({ mensagem: 'não encontrado' })
         } catch (erro) {
+            if (erro.name === 'SequelizeForeignKeyConstraintError') {
+                return res.status(400).json({ mensagem: 'violação de integridade referencial', detalhes: erro.message });
+            }
             res.status(500).json(erro)
         }
     }
