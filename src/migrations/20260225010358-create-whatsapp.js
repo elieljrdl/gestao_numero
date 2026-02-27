@@ -9,26 +9,29 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      perfil: {
-        type: Sequelize.STRING
+      tipo: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
       observacao: {
         type: Sequelize.TEXT
       },
       conexao_id: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.INTEGER,
         references: { model: 'conexoes', key: 'id'}
       },
       perfil_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'perfis', key: 'id'}
+        references: { model: 'perfis', key: 'id'},
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
-      numero_id: {
-        allowNull: false,
+      carteira_id: {
+        allowNull: true,
         type: Sequelize.INTEGER,
-        references: { model: 'numeros', key: 'id'}
+        references: { model: 'clientes', key: 'id'}
       },
       createdAt: {
         allowNull: false,

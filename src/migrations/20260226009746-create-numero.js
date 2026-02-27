@@ -15,10 +15,14 @@ module.exports = {
       numero: {
         type: Sequelize.STRING
       },
-      status_id: {
-        allowNull: false,
+      whatsapp_id: {
+        allowNull: true,
         type: Sequelize.INTEGER,
-        references: { model: 'status', key: 'id'}
+        references: { model: 'whatsapps', key: 'id'}
+      },
+      status: {
+        allowNull: false,
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

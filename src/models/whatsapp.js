@@ -11,22 +11,28 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Whatsapp.belongsTo(models.Conexao, {
-        foreignKey: 'conexao_id'
+        foreignKey: 'conexao_id',
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE'
       });
       Whatsapp.belongsTo(models.Perfil, {
-        foreignKey: 'perfil_id'
+        foreignKey: 'perfil_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       });
-      Whatsapp.belongsTo(models.Numero, {
-        foreignKey: 'numero_id'
+      Whatsapp.hasMany(models.Numero, {
+        foreignKey: 'whatsapp_id'
       });
       Whatsapp.belongsTo(models.Cliente, {
-        foreignKey: 'carteira_id'
+        foreignKey: 'carteira_id',
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE'
       });
     }
   }
   Whatsapp.init({
-    perfil: DataTypes.STRING,
-    observacao: DataTypes.TEXT
+    observacao: DataTypes.TEXT,
+    tipo: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Whatsapp',

@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Celular.hasMany(models.Perfil, {
-        foreignKey: "celular_id"
+        foreignKey: "celular_id",
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       });
     }
   }

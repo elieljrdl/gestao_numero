@@ -11,12 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Perfil.hasMany(models.Whatsapp, {
-        foreignKey: 'perfil_id'
+        foreignKey: 'perfil_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       });
 
       Perfil.belongsTo(models.Celular, {
-        foreignKey: 'celular_id'
-      })
+        foreignKey: 'celular_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+      });
     }
   }
   Perfil.init({
