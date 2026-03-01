@@ -1,5 +1,5 @@
 const Services = require('./Services.js')
-const db = require('../models')
+const db = require('../database/models');
 
 class PerfilServices extends Services {
     constructor() {
