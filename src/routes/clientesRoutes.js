@@ -1,11 +1,13 @@
 const { Router } = require('express');
 const ClienteController = require('../controllers/ClienteController.js');
-const ConexaoController = require('../controllers/ConexaoController.js')
+const ConexaoController = require('../controllers/ConexaoController.js');
+const authMiddleware = require('../middlewares/authMiddleware.js');
 
 const clienteController = new ClienteController();
 const conexaoController = new ConexaoController();
 
 const router = Router();
+router.use(authMiddleware);
 
 router.get('/clientes', (req, res) => clienteController.getAll(req, res));
 router.get('/clientes/:id', (req, res) => clienteController.getOneForId(req, res));

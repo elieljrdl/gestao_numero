@@ -1,11 +1,14 @@
 const { Router } = require('express');
 const CelularController = require('../controllers/CelularController.js');
 const PerfilController = require('../controllers/PerfilController.js');
+const authMiddleware = require('../middlewares/authMiddleware.js');
 
 const celularController = new CelularController();
 const perfilController = new PerfilController();
 
+
 const router = Router();
+router.use(authMiddleware);
 
 router.get('/celulares', (req, res) => celularController.getAll(req, res));
 router.get('/celulares/:id', (req, res) => celularController.getOneForId(req, res));

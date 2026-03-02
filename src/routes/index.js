@@ -4,6 +4,7 @@ const celulares = require('./celularesRoutes.js')
 const status = require('./statusRoutes.js')
 const numeros = require('./numerosRoutes.js')
 const whatsapps = require('./whatsappsRoutes.js')
+const usuarios = require('./usuariosRoutes.js')
 
 const routes = (app) => {
 
@@ -13,7 +14,8 @@ const routes = (app) => {
         celulares,
         status,
         numeros,
-        whatsapps
+        whatsapps,
+        usuarios
     );
 }
 

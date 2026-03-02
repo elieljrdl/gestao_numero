@@ -25,7 +25,7 @@ class NumeroServices extends Services {
   }
 
   async updateItem(bodyUpdate, id) {
-    if (bodyUpdate.whatsapp_id) {
+    if (bodyUpdate.whatsapp_id !== null && bodyUpdate.whatsapp_id !== undefined) {
       const conflict = await db.Numero.findOne({
         where: {
           whatsapp_id: bodyUpdate.whatsapp_id,
