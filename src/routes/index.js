@@ -10,12 +10,12 @@ const routes = (app) => {
 
     app.use(
         express.json(),
+        usuarios,
         clientes,
         celulares,
         status,
         numeros,
         whatsapps,
-        usuarios
     );
 }
 
