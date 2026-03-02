@@ -31,7 +31,7 @@ class Services {
     async updateItem(bodyUpdate, id) {
         const listItensUpdate = await db[this.model].update(bodyUpdate, {
             where: { id }
-        });     // agora aguardamos o resultado
+        });    
 
         if (listItensUpdate[0] === 0 ) {
             return false

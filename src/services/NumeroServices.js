@@ -8,14 +8,19 @@ class NumeroServices extends Services {
 
   // impedimos associação de um número a mais de um WhatsApp activo
   async createItem(bodyCreate) {
-    const exists = await db.Numero.findOne({
-      where: { whatsapp_id: bodyCreate.whatsapp_id },
-    });
-    if (exists) {
-      const err = new Error("este whatsapp já está vinculado a outro numero");
-      err.name = "BusinessRuleError";
-      throw err;
+
+    if (bodyCreate.whatsapp_id !== null && bodyCreate.whatsapp_id !== undefined) {
+      const exists = await db.Numero.findOne({
+        where: { whatsapp_id: bodyCreate.whatsapp_id },
+      });
+      
+      if (exists) {
+        const err = new Error("este whatsapp já está vinculado a outro numero");
+        err.name = "BusinessRuleError";
+        throw err;
+      }
     }
+    
     return super.createItem(bodyCreate);
   }
 

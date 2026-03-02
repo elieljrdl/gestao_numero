@@ -36,7 +36,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Whatsapp',
-    tableName: "whatsapps"
+    tableName: "whatsapps",
+    paranoid: true,
   });
   return Whatsapp;
 };
