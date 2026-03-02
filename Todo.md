@@ -21,18 +21,18 @@
 
 # 🟡 RN — Regras de Negócio
 
-- [] Ao excluir um cliente, as conexões vinculadas devem ser excluidas automaticamente e campos relacionados na tabela whatsapp devem receber valores nulos.
-- [] Ao excluir um celular, todos os perfis vinculados devem ser excluídos automaticamente.  
-- [] Ao excluir um perfil, todos os registros de WhatsApp vinculados devem ser excluídos automaticamente.
-- [] Um número não pode estar vinculado a mais de um WhatsApp ativo simultaneamente.
+- [x] Ao excluir um cliente, as conexões vinculadas devem ser excluidas automaticamente e campos relacionados na tabela whatsapp devem receber valores nulos.
+- [x] Ao excluir um celular, todos os perfis vinculados devem ser excluídos automaticamente.  
+- [x] Ao excluir um perfil, todos os registros de WhatsApp vinculados devem ser excluídos automaticamente.
+- [x] Um número não pode estar vinculado a mais de um WhatsApp ativo simultaneamente.
 
 
 # 🔵 RNF — Requisitos Não Funcionais
 
-- [] A aplicação deve persistir dados em banco PostgreSQL.
+- [x] A aplicação deve persistir dados em banco PostgreSQL.
 - [] Todas as exclusões que afetem múltiplas entidades devem ocorrer dentro de transações.
-- [] A API deve responder em formato JSON.
+- [x] A API deve responder em formato JSON.
 - [] A autenticação deve ser feita via JWT.
-- [] Todas as listagens devem ser paginadas.
-- [] O sistema deve garantir integridade referencial através de foreign keys.
-- [] A aplicação deve tratar erros de integridade (ForeignKeyConstraintError) retornando mensagens padronizadas ao cliente.
+- [x] Todas as listagens devem ser paginadas.
+- [x] O sistema deve garantir integridade referencial através de foreign keys.
+- [x] A aplicação deve tratar erros de integridade (ForeignKeyConstraintError) retornando mensagens padronizadas ao cliente.

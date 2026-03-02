@@ -1,8 +1,10 @@
 const { Router } = require('express');
 const NumeroController = require('../controllers/NumeroController.js');
+const authMiddleware = require('../middlewares/authMiddleware.js');
 
 const numeroController = new NumeroController();
 const router = Router();
+router.use(authMiddleware);
 
 router.get('/numeros', (req, res) => numeroController.getAll(req, res));
 router.get('/numeros/:id', (req, res) => numeroController.getOneForId(req, res));
