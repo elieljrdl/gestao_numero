@@ -28,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE'
       });
+
     }
   }
   Whatsapp.init({

@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       Numero.belongsTo(models.Whatsapp, {
         foreignKey: 'whatsapp_id'
       });
+
+      Numero.hasMany(models.Reposicao, {
+        foreignKey: 'numero_id'
+      });
     }
   }
   Numero.init({

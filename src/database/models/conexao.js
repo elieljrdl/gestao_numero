@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Conexao extends Model {
     /**
@@ -11,25 +9,36 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Conexao.belongsTo(models.Cliente, {
-        foreignKey: 'cliente_id',
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
+        foreignKey: "cliente_id",
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
       });
 
       Conexao.hasMany(models.Whatsapp, {
-        foreignKey: 'conexao_id',
-        onDelete: 'SET NULL',
-        onUpdate: 'CASCADE'
+        foreignKey: "conexao_id",
+        onDelete: "SET NULL",
+        onUpdate: "CASCADE",
+      });
+
+      Conexao.hasMany(models.Reposicao, {
+        foreignKey: "conexao_before_id",
+      });
+
+      Conexao.hasMany(models.Reposicao, {
+        foreignKey: "conexao_after_id",
       });
     }
   }
-  Conexao.init({
-    nome: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Conexao',
-    tableName: 'conexoes',
-    paranoid: true,
-  });
+  Conexao.init(
+    {
+      nome: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: "Conexao",
+      tableName: "conexoes",
+      paranoid: true,
+    },
+  );
   return Conexao;
 };
