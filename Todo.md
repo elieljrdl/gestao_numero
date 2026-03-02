@@ -30,9 +30,9 @@
 # 🔵 RNF — Requisitos Não Funcionais
 
 - [x] A aplicação deve persistir dados em banco PostgreSQL.
-- [] Todas as exclusões que afetem múltiplas entidades devem ocorrer dentro de transações.
+- [x] Todas as exclusões que afetem múltiplas entidades devem ocorrer dentro de transações.
 - [x] A API deve responder em formato JSON.
-- [] A autenticação deve ser feita via JWT.
+- [x] A autenticação deve ser feita via JWT.
 - [x] Todas as listagens devem ser paginadas.
 - [x] O sistema deve garantir integridade referencial através de foreign keys.
 - [x] A aplicação deve tratar erros de integridade (ForeignKeyConstraintError) retornando mensagens padronizadas ao cliente.
