@@ -18,7 +18,7 @@ class UsuarioController extends Controller {
             const newUser = usuarioServices.createItem({ nome, email, senha, isAdmin });
             return res.status(201).json(newUser);
          } catch (error) {
-            return res.status(500).json({ error: 'Erro ao criar usuário.', details: error.message});
+            return res.status(401).json({ error: 'Erro ao criar usuário.', details: error.message});
          }
     }
 

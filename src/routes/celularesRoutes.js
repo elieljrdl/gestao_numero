@@ -11,10 +11,12 @@ const router = Router();
 router.use(authMiddleware);
 
 router.get('/celulares', (req, res) => celularController.getAll(req, res));
+router.get('/celulares/search', (req, res) => celularController.getCelularFilters(req, res));
 router.get('/celulares/:id', (req, res) => celularController.getOneForId(req, res));
 router.post('/celulares', (req, res) => celularController.createNew(req, res));
 router.put('/celulares/:id', (req, res) => celularController.atualization(req, res));
 router.delete('/celulares/:id', (req, res) => celularController.reqDelete(req, res));
+
 
 // rota para buscar celular por perfil
 router.get('/celulares/:idCelular/perfil', (req, res) => perfilController.getCelForPerfil(req, res));
