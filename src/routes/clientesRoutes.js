@@ -10,6 +10,7 @@ const router = Router();
 router.use(authMiddleware);
 
 router.get('/clientes', (req, res) => clienteController.getAll(req, res));
+router.get('/celulares/search', (req, res) => clienteController.getCelularFilters(req, res));
 router.get('/clientes/:id', (req, res) => clienteController.getOneForId(req, res));
 router.post('/clientes', (req, res) => clienteController.createNew(req, res));
 router.put('/clientes/:id', (req, res) => clienteController.atualization(req, res));
