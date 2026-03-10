@@ -1,4 +1,5 @@
 const Services = require('./Services.js')
+const { Op } = require('sequelize');
 const db = require('../database/models');
 
 class ClienteServices extends Services {
