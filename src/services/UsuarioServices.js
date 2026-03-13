@@ -1,4 +1,5 @@
 const Services = require('./Services.js')
+const { Op } = require('sequelize');
 const db = require('../database/models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -6,6 +7,33 @@ const jwt = require('jsonwebtoken');
 class UsuarioServices extends Services {
     constructor() {
         super("Usuario")
+    }
+
+    async getFiltersService(filters) {
+        const { nome, email } = filters;
+        try {
+            const where = {};
+
+            if (nome) {
+                where.nome = {
+                    [Op.iLike]: `%${nome}%`
+                };
+            }
+
+            if (email) {
+                where.email = {
+                    [Op.iLike]: `%${email}%`
+                };
+            }
+
+            const usuarios = await db.Usuario.findAll({
+                where
+            });
+
+            return usuarios;
+        } catch (error) {
+            throw error;
+        }
     }
 
     async createItem({nome, email, senha, isAdmin}) {

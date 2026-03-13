@@ -14,7 +14,8 @@ class ClienteServices extends Services {
         });
     }
 
-        async getClienteFilters(nome) {
+        async getFiltersService(filters) {
+            const { nome } = filters;
             try {
                 const where = {};
     

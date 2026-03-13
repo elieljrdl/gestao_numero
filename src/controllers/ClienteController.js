@@ -9,15 +9,6 @@ class ClienteController extends Controller {
         super(clienteServices)
     }
 
-    async getClienteFilters(req, res) {
-        try {
-            const { nome } = req.query;
-            const clientes = await clienteServices.getClienteFilters(nome);
-            res.status(200).json(clientes);
-        } catch (error) {
-            res.status(500).json({ error: error.message });
-        }
-    }
 }
 
 module.exports = ClienteController;

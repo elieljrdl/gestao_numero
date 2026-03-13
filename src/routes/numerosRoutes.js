@@ -7,6 +7,7 @@ const router = Router();
 router.use(authMiddleware);
 
 router.get('/numeros', (req, res) => numeroController.getAll(req, res));
+router.get('/numeros/search', (req, res) => numeroController.getFilters(req, res));
 router.get('/numeros/:id', (req, res) => numeroController.getOneForId(req, res));
 router.post('/numeros', (req, res) => numeroController.createNew(req, res));
 router.put('/numeros/:id', (req, res) => numeroController.atualization(req, res));

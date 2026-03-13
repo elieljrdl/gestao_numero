@@ -7,7 +7,8 @@ class CelularServices extends Services {
         super('Celular');
     }
 
-    async getCelularFilters(numeroAp, modelo) {
+    async getFiltersService(filters) {
+        const { numeroAp, modelo } = filters;
         try {
             const where = {};
 
