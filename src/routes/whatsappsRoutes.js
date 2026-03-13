@@ -7,6 +7,7 @@ const router = Router();
 router.use(authMiddleware);
 
 router.get('/whatsapps', (req, res) => whatsappController.getAll(req, res));
+router.get('/whatsapps/search', (req, res) => whatsappController.getFilters(req, res));
 router.get('/whatsapps/:id', (req, res) => whatsappController.getOneForId(req, res));
 router.post('/whatsapps', (req, res) => whatsappController.createNew(req, res));
 router.put('/whatsapps/:id', (req, res) => whatsappController.atualization(req, res));

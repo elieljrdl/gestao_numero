@@ -85,6 +85,17 @@ class Controller {
             res.status(500).json(erro)
         }
     }
+
+    async getFilters(req, res) {
+        const filters = req.query
+        const { page = 1, limit = 10 } = req.query;
+        try {
+            const itens = await this.entidadeService.getFiltersService(filters, Number(page), Number(limit))
+            return res.status(200).json(itens)
+        } catch (erro) {
+            res.status(500).json(erro)
+        }
+    }
 }
 
 module.exports = Controller;
